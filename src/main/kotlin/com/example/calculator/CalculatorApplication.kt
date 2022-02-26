@@ -7,13 +7,14 @@ import org.springframework.boot.runApplication
 @SpringBootApplication
 class CalculatorApplication(calculator: CalculationParams): CommandLineRunner {
 
-	var parser:Parser = Parser(calculator)
+	val math: IMathExpressionCalculate = ClassicCalculatorMath(ClassicCalculatorParams())
+	var parser:ClassicRoundParenthesesParser = ClassicRoundParenthesesParser(math)
 	override fun run(vararg args: String?) {
 		println("input math expression")
 		val exp = readLine()
 
 		if(exp != null){
-			println("result: ${parser.parenthesesParser(exp)}")
+			println("result: ${parser.parse(exp)}")
 		}
 	}
 }
