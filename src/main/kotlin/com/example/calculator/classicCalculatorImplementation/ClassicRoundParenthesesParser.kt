@@ -1,15 +1,15 @@
-package com.example.calculator
+package com.example.calculator.classicCalculatorImplementation
+import com.example.calculator.interfaces.IMathExpressionCalculate
+import com.example.calculator.interfaces.IParse
 import java.util.*
 
-class ClassicRoundParenthesesParser(override val math: IMathExpressionCalculate) :IParse {
+class ClassicRoundParenthesesParser(override val math: IMathExpressionCalculate) : IParse {
 
-
-
-    override fun parse(input: String,  ): Double {
-        var input = input // параметр всегда val? val input
+    override fun parse(input: String): Double {
+        var input = input
 
         val parenthesesIndexStack = Stack<Int>()
-        while (input.contains('(') ){
+        while (input.contains('(') && input.contains(')')){
             var newInput:String = ""
             for (i in input.indices) {
                 if (input[i] == '(') {
@@ -25,12 +25,8 @@ class ClassicRoundParenthesesParser(override val math: IMathExpressionCalculate)
             }
             input = newInput
         }
+        if(input.contains('(') || input.contains(')'))
+            throw Exception("Not correct parentheses expression")
         return math.calculate(input)
     }
-
-//
-//    fun getCalculatorDisc() : String{
-//        return calc.description
-//    }
-
 }

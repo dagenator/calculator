@@ -1,4 +1,5 @@
-package com.example.calculator
+package com.example.calculator.classicCalculatorImplementation
+import com.example.calculator.interfaces.CalculationParams
 import org.springframework.stereotype.Component
 import java.util.*
 

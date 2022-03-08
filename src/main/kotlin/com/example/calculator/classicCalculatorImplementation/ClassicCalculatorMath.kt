@@ -1,18 +1,20 @@
-package com.example.calculator
+package com.example.calculator.classicCalculatorImplementation
+
+import com.example.calculator.interfaces.CalculationParams
+import com.example.calculator.interfaces.IMathExpressionCalculate
 
 class ClassicCalculatorMath(override val params: CalculationParams) : IMathExpressionCalculate {
 
     var missedChar: Char? = null
 
     override fun calculate(input: String, actionIndex: Int): Double {
-        if(params.actions.isEmpty()) throw Exception("CalclulationParams.Actions is empty ")
+        if (input == "")
+            return 0.0
 
         var input = input
         var missedAction: ((input: Double, Double) -> Double)? = null
 
-        if (input == "") {
-            return 0.0
-        }
+        if(params.actions.isEmpty()) throw Exception("CalclulationParams.Actions is empty ")
 
         if (params.actionsPriority.contains(input[input.length - 1])) {
             // Костыль? Проверка * или \ межд дыумя отриц числами - missed char
