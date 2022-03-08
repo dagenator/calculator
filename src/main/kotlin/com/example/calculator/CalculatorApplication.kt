@@ -19,7 +19,8 @@ class CalculatorApplication(calculator: CalculationParams): CommandLineRunner {
 		val exp = readLine()
 
 		if(exp != null){
-			println("result: ${parser.parse(exp)}")
+			val res = parser.parse(exp)
+			println("result: $res")
 		}
 	}
 }
