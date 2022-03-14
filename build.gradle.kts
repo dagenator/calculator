@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.ir.backend.js.compile
 
 plugins {
 	id("org.springframework.boot") version "2.6.3"
@@ -21,8 +22,10 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.junit.jupiter:junit-jupiter:5.8.1")
+	implementation("org.junit.jupiter:junit-jupiter:5.8.2")
+	implementation("org.mockito:mockito-all:1.10.19")
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+	implementation("org.mockito:mockito-core:4.3.1")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
